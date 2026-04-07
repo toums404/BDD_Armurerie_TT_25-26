@@ -61,6 +61,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\ArmeDAL.cs" />
+    <Compile Include="DAL\ClientDAL.cs" />
+    <Compile Include="DAL\CommandeFournisseurDAL.cs" />
+    <Compile Include="DAL\CompoArme_liaisonDAL.cs" />
+    <Compile Include="DAL\FournisseurDAL.cs" />
+    <Compile Include="DAL\LigneCommandeFDAL.cs" />
+    <Compile Include="DAL\LigneVenteDAL.cs" />
+    <Compile Include="DAL\PieceDAL.cs" />
+    <Compile Include="DAL\VenteDAL.cs" />
     <Compile Include="Entites\Arme.cs" />
     <Compile Include="Entites\Client.cs" />
     <Compile Include="Entites\CommandeFournisseur.cs" />
@@ -126,7 +135,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BLL\" />
-    <Folder Include="DAL\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
