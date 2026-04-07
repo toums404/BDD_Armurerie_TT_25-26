@@ -61,6 +61,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entites\Arme.cs" />
+    <Compile Include="Entites\Client.cs" />
+    <Compile Include="Entites\CommandeFournisseur.cs" />
+    <Compile Include="Entites\CompoArme_liaison.cs" />
+    <Compile Include="Entites\Fournisseur.cs" />
+    <Compile Include="Entites\LigneCommandeF.cs" />
+    <Compile Include="Entites\LigneVente.cs" />
+    <Compile Include="Entites\Piece.cs" />
+    <Compile Include="Entites\Vente.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,7 +127,6 @@
   <ItemGroup>
     <Folder Include="BLL\" />
     <Folder Include="DAL\" />
-    <Folder Include="Entites\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
