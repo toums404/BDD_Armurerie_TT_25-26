@@ -40,6 +40,7 @@
             this.Name = "FenetrePrincipale";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Armurerie TomCorp";
+            this.Load += new System.EventHandler(this.FenetrePrincipale_Load);
             this.ResumeLayout(false);
 
         }
