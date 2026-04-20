@@ -17,7 +17,7 @@ namespace BDD_Armurerie_TT_25_26.DAL
             List<Vente> listeVentes = new List<Vente>();
             using (SqlConnection connexion = new SqlConnection(_connectionString))
             {
-                string requete = "SELECT IdVente, DateVente, IdClient, TypeDocument FROM T_Vente";
+                string requete = "SELECT IdVente, DateVente, IdClient, TypeDocument, MontantTotal FROM T_Vente";
                 using (SqlCommand commande = new SqlCommand(requete, connexion))
                 {
                     connexion.Open();
@@ -30,12 +30,33 @@ namespace BDD_Armurerie_TT_25_26.DAL
                             v.DateVente = Convert.ToDateTime(lecteur["DateVente"]);
                             v.IdClient = Convert.ToInt32(lecteur["IdClient"]);
                             v.TypeDocument = lecteur["TypeDocument"].ToString();
+                            v.MontantTotal = Convert.ToInt32(lecteur["MontantTotal"]);
                             listeVentes.Add(v);
                         }
                     }
                 }
             }
             return listeVentes;
+        }
+        public void AjouterVente(int idClient, DateTime dateVente, string typeDocument, int MontantTotal)
+        {
+            using (SqlConnection connexion = new SqlConnection(_connectionString))
+            {
+                // insertion des données
+                string requete = "INSERT INTO T_Vente (DateVente, IdClient, TypeDocument, MontantTotal) VALUES (@date, @idClient, @typeDoc, @montant)";
+
+                using (SqlCommand commande = new SqlCommand(requete, connexion))
+                {
+                    //remplacement des para de secu par vraies valeurs
+                    commande.Parameters.AddWithValue("@date", dateVente);
+                    commande.Parameters.AddWithValue("@idClient", idClient);
+                    commande.Parameters.AddWithValue("@typeDoc", typeDocument);
+                    commande.Parameters.AddWithValue("@montant", MontantTotal);
+
+                    connexion.Open();
+                    commande.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

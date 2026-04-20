@@ -26,7 +26,7 @@ namespace BDD_Armurerie_TT_25_26.DAL
                         {
                             Piece p = new Piece();
                             p.IdPiece = Convert.ToInt32(lecteur["IdPiece"]);
-                            p.Nom = lecteur["NomPiece"].ToString();
+                            p.Nom = lecteur["Nom"].ToString();
                             p.Description = lecteur["Description"].ToString();
                             p.QuantiteStock = Convert.ToInt32(lecteur["QuantiteStock"]);
                             p.SeuilAlerte = Convert.ToInt32(lecteur["SeuilAlerte"]);
@@ -38,6 +38,24 @@ namespace BDD_Armurerie_TT_25_26.DAL
                 }
             }
             return listePieces;
+        }
+        public void DiminuerStock(int idPiece, int quantiteUtilisee)
+        {
+            using (SqlConnection connexion = new SqlConnection(_connectionString))
+            {
+                //maj du stock de la pièce utilisée 
+                string requete = "UPDATE T_Piece SET QuantiteStock = QuantiteStock - @qte WHERE IdPiece = @id";
+
+                using (SqlCommand commande = new SqlCommand(requete, connexion))
+                {
+                    commande.Parameters.AddWithValue("@qte", quantiteUtilisee);
+                    commande.Parameters.AddWithValue("@id", idPiece);
+
+                    connexion.Open();
+                    //NonQuery car on lit pas de données
+                    commande.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

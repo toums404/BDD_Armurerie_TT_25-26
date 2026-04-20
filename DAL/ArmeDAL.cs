@@ -38,5 +38,38 @@ namespace BDD_Armurerie_TT_25_26.DAL
             }
             return listeArmes;
         }
+        public void AugmenterStock(int idArme, int quantiteFabriquee)
+        {
+            using (SqlConnection connexion = new SqlConnection(_connectionString))
+            {
+                //maj du stock
+                string requete = "UPDATE T_Arme SET QuantiteStock = QuantiteStock + @qte WHERE IdArme = @id";
+
+                using (SqlCommand commande = new SqlCommand(requete, connexion))
+                {
+                    commande.Parameters.AddWithValue("@qte", quantiteFabriquee);
+                    commande.Parameters.AddWithValue("@id", idArme);
+
+                    connexion.Open();
+                    commande.ExecuteNonQuery();
+                }
+            }
+        }
+        public void DiminuerStock(int idArme, int quantiteVendue)
+        {
+            using (SqlConnection connexion = new SqlConnection(_connectionString))
+            {
+                string requete = "UPDATE T_Arme SET QuantiteStock = QuantiteStock - @qte WHERE IdArme = @id";
+
+                using (SqlCommand commande = new SqlCommand(requete, connexion))
+                {
+                    commande.Parameters.AddWithValue("@qte", quantiteVendue);
+                    commande.Parameters.AddWithValue("@id", idArme);
+
+                    connexion.Open();
+                    commande.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace BDD_Armurerie_TT_25_26.Entites
         public DateTime DateVente { get; set; }
         public int IdClient { get; set; }
         public string TypeDocument { get; set; }
+        public int MontantTotal { get; set; }
 
     }
 }

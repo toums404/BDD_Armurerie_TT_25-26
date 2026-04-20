@@ -36,5 +36,34 @@ namespace BDD_Armurerie_TT_25_26.DAL
             }
             return listeCompoArme_liaisons;
         }
+        public List<CompoArme_liaison> GetCompositionArme(int idArme)//methode pour eviter de charger toute la bdd, on prend que l'id de l'arme
+        {
+            List<CompoArme_liaison> recette = new List<CompoArme_liaison>();
+            using (SqlConnection connexion = new SqlConnection(_connectionString))
+            {
+                
+                string requete = "SELECT IdArme, IdPiece, QuantiteRequise FROM T_CompoArme_liaison WHERE IdArme = @id";
+
+                using (SqlCommand commande = new SqlCommand(requete, connexion))
+                {
+                    
+                    commande.Parameters.AddWithValue("@id", idArme);
+
+                    connexion.Open();
+                    using (SqlDataReader lecteur = commande.ExecuteReader())
+                    {
+                        while (lecteur.Read())
+                        {
+                            CompoArme_liaison ca = new CompoArme_liaison();
+                            ca.IdArme = Convert.ToInt32(lecteur["IdArme"]);
+                            ca.IdPiece = Convert.ToInt32(lecteur["IdPiece"]);
+                            ca.QuantiteRequise = Convert.ToInt32(lecteur["QuantiteRequise"]);
+                            recette.Add(ca);
+                        }
+                    }
+                }
+            }
+            return recette;
+        }
     }
 }
