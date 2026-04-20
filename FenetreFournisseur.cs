@@ -1,0 +1,35 @@
+﻿using BDD_Armurerie_TT_25_26.BLL;
+using BDD_Armurerie_TT_25_26.Entites;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace BDD_Armurerie_TT_25_26
+{
+    public partial class FenetreFournisseur : Form
+    {
+        public FenetreFournisseur()
+        {
+            InitializeComponent();
+        }
+
+        private void bAjouter_Click(object sender, EventArgs e)
+        {
+            Fournisseur nouveau = new Fournisseur
+            {
+                NomSociete = txtNom.Text,
+                ContactNom = txtContact.Text,
+                Telephone = txtTel.Text
+            };
+            FournisseurManager manager = new FournisseurManager();
+            string message = manager.CreerFournisseur(nouveau);
+            MessageBox.Show(message);
+        }
+    }
+}

@@ -37,5 +37,20 @@ namespace BDD_Armurerie_TT_25_26.DAL
             }
             return listeFournisseurs;
         }
+        public void AjouterFournisseur(Fournisseur f)
+        {
+            using (SqlConnection connexion = new SqlConnection(_connectionString))
+            {
+                string requete = "INSERT INTO T_Fournisseurs (NomSociete, ContactNom, Telephone) VALUES (@nom, @contact, @tel)";
+                using (SqlCommand commande = new SqlCommand(requete, connexion))
+                {
+                    commande.Parameters.AddWithValue("@nom", f.NomSociete);
+                    commande.Parameters.AddWithValue("@contact", f.ContactNom);
+                    commande.Parameters.AddWithValue("@tel", f.Telephone);
+                    connexion.Open();
+                    commande.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

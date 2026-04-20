@@ -61,7 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\ArmeManager.cs" />
+    <Compile Include="BLL\CommandeManager.cs" />
     <Compile Include="BLL\FabricationManager.cs" />
+    <Compile Include="BLL\FournisseurManager.cs" />
+    <Compile Include="BLL\PieceManager.cs" />
     <Compile Include="BLL\StockManager.cs" />
     <Compile Include="BLL\VenteManager.cs" />
     <Compile Include="DAL\ArmeDAL.cs" />
@@ -82,6 +86,42 @@
     <Compile Include="Entites\LigneVente.cs" />
     <Compile Include="Entites\Piece.cs" />
     <Compile Include="Entites\Vente.cs" />
+    <Compile Include="FenetreArme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FenetreArme.Designer.cs">
+      <DependentUpon>FenetreArme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FenetreAssemblage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FenetreAssemblage.Designer.cs">
+      <DependentUpon>FenetreAssemblage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FenetreCommande.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FenetreCommande.Designer.cs">
+      <DependentUpon>FenetreCommande.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FenetreFournisseur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FenetreFournisseur.Designer.cs">
+      <DependentUpon>FenetreFournisseur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FenetrePiece.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FenetrePiece.Designer.cs">
+      <DependentUpon>FenetrePiece.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FenetreVente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FenetreVente.Designer.cs">
+      <DependentUpon>FenetreVente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +130,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FenetreArme.resx">
+      <DependentUpon>FenetreArme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FenetreCommande.resx">
+      <DependentUpon>FenetreCommande.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FenetreFournisseur.resx">
+      <DependentUpon>FenetreFournisseur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FenetrePiece.resx">
+      <DependentUpon>FenetrePiece.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

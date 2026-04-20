@@ -57,5 +57,39 @@ namespace BDD_Armurerie_TT_25_26.DAL
                 }
             }
         }
+        public void AugmenterStock(int idPiece, int quantiteRecue)
+        {
+            using (SqlConnection connexion = new SqlConnection(_connectionString))
+            {
+                string requete = "UPDATE T_Piece SET QuantiteStock = QuantiteStock + @qte WHERE IdPiece = @id";
+
+                using (SqlCommand commande = new SqlCommand(requete, connexion))
+                {
+                    commande.Parameters.AddWithValue("@qte", quantiteRecue);
+                    commande.Parameters.AddWithValue("@id", idPiece);
+
+                    connexion.Open();
+                    commande.ExecuteNonQuery();
+                }
+            }
+        }
+        public void AjouterPiece(Piece p)
+        {
+            using (SqlConnection connexion = new SqlConnection(_connectionString))
+            {
+                string requete = "INSERT INTO T_Piece (Nom, Description, QuantiteStock, SeuilAlerte, PrixAchat, IdFournisseur) VALUES (@nom, @desc, @stock, @seuil, @prix, @idF)";
+                using (SqlCommand commande = new SqlCommand(requete, connexion))
+                {
+                    commande.Parameters.AddWithValue("@nom", p.Nom);
+                    commande.Parameters.AddWithValue("@desc", p.Description);
+                    commande.Parameters.AddWithValue("@stock", p.QuantiteStock);
+                    commande.Parameters.AddWithValue("@seuil", p.SeuilAlerte);
+                    commande.Parameters.AddWithValue("@prix", p.PrixAchat);
+                    commande.Parameters.AddWithValue("@idF", p.IdFournisseur);
+                    connexion.Open();
+                    commande.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

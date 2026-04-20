@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BDD_Armurerie_TT_25_26.BLL;
 using BDD_Armurerie_TT_25_26.DAL;
 using BDD_Armurerie_TT_25_26.Entites;
 
@@ -14,6 +15,8 @@ namespace BDD_Armurerie_TT_25_26
 {
     public partial class FenetrePrincipale : Form
     {
+        private StockManager _stockManager = new StockManager();
+        private VenteManager _venteManager = new VenteManager();
         public FenetrePrincipale()
         {
             InitializeComponent();
@@ -21,30 +24,41 @@ namespace BDD_Armurerie_TT_25_26
 
         private void FenetrePrincipale_Load(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    // 1. On instancie la DAL
-            //    FournisseurDAL dalTest = new FournisseurDAL();
+            dgvAlertes.DataSource = _stockManager.ObtenirArmesSeuil();
+            decimal ca = _venteManager.CalculerChiffreAffairesHebdo();
+            lblChiffreAffaires.Text = $"Chiffre d'affaires hebdomadaire : {ca} €";
+        }
 
-            //    // 2. On tente de récupérer les données
-            //    List<Fournisseur> liste = dalTest.GetLesFournisseurs();
+        private void miFournisseur_Click(object sender, EventArgs e)
+        {
+            FenetreFournisseur fenetreFournisseur = new FenetreFournisseur();
+            fenetreFournisseur.ShowDialog();
+        }
+        private void miArme_Click(object sender, EventArgs e)
+        {
+            FenetreArme fenetreArme = new FenetreArme();
+            fenetreArme.ShowDialog();
+        }
+        private void miPiece_Click(object sender, EventArgs e)
+        {
+            FenetrePiece fenetrePiece = new FenetrePiece();
+            fenetrePiece.ShowDialog();
+        }
 
-            //    // 3. On affiche le résultat dans une petite boîte de dialogue
-            //    if (liste.Count > 0)
-            //    {
-            //        MessageBox.Show($"SUCCÈS TOTAL ! 🎉\nLa connexion marche et j'ai trouvé {liste.Count} fournisseur(s) !\nLe premier est : {liste[0].NomSociete}");
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Connexion réussie ! 🟢\nMais la table est vide, tu n'as pas ajouté de données de test.");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    // Si la connexion plante, l'application ne crashera pas, elle affichera l'erreur ici !
-            //    MessageBox.Show("Aïe, erreur de connexion 🔴 :\n\n" + ex.Message);
-            //}
-
+        private void miVente_Click(object sender, EventArgs e)
+        {
+            FenetreVente fenetreVente = new FenetreVente();
+            fenetreVente.ShowDialog();
+        }
+        private void miAssembler_Click(object sender, EventArgs e)
+        {
+            FenetreAssemblage fenetreAssemblage = new FenetreAssemblage();
+            fenetreAssemblage.ShowDialog();
+        }
+        private void miCommandeFournisseur_Click(object sender, EventArgs e)
+        {
+            FenetreCommande fenetreCommande = new FenetreCommande();
+            fenetreCommande.ShowDialog();
         }
     }
 }

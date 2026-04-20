@@ -37,5 +37,27 @@ namespace BDD_Armurerie_TT_25_26.DAL
             }
             return listeCommandesFournisseur;
         }
+        public int CreerEnteteCommande(int idFournisseur)
+        {
+            using (SqlConnection connexion = new SqlConnection(_connectionString))
+            {
+                // On recup l'id générée par le serveur après insertion
+                string requete = "INSERT INTO T_CommandeFournisseur (DateCommande, IdFournisseur, Statut) " +
+                                 "VALUES (@date, @idF, @statut); " +
+                                 "SELECT SCOPE_IDENTITY();";
+
+                using (SqlCommand commande = new SqlCommand(requete, connexion))
+                {
+                    commande.Parameters.AddWithValue("@date", DateTime.Now);
+                    commande.Parameters.AddWithValue("@idF", idFournisseur);
+                    commande.Parameters.AddWithValue("@statut", "Envoyée");
+
+                    connexion.Open();
+                    //on récupère le nouvel ID
+                    int nouvelId = Convert.ToInt32(commande.ExecuteScalar());
+                    return nouvelId;
+                }
+            }
+        }
     }
 }

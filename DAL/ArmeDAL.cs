@@ -17,7 +17,7 @@ namespace BDD_Armurerie_TT_25_26.DAL
             List<Arme> listeArmes = new List<Arme>();
             using (SqlConnection connexion = new SqlConnection(_connectionString))
             {
-                string requete = "SELECT IdArme, Nom, Type, Calibre FROM T_Arme";
+                string requete = "SELECT IdArme, Nom, PrixVente, QuantiteStock, SeuilAlerte  FROM T_Arme";
                 using (SqlCommand commande = new SqlCommand(requete, connexion))
                 {
                     connexion.Open();
@@ -66,6 +66,23 @@ namespace BDD_Armurerie_TT_25_26.DAL
                     commande.Parameters.AddWithValue("@qte", quantiteVendue);
                     commande.Parameters.AddWithValue("@id", idArme);
 
+                    connexion.Open();
+                    commande.ExecuteNonQuery();
+                }
+            }
+        }
+        public void AjouterArme(Arme a)
+        {
+            using (SqlConnection connexion = new SqlConnection(_connectionString))
+            {
+                string requete = "INSERT INTO T_Arme (Nom, QuantiteStock, SeuilAlerte, PrixVente) " +
+                                 "VALUES (@nom, @stock, @seuil, @prix)";
+                using (SqlCommand commande = new SqlCommand(requete, connexion))
+                {
+                    commande.Parameters.AddWithValue("@nom", a.Nom);
+                    commande.Parameters.AddWithValue("@stock", a.QuantiteStock);
+                    commande.Parameters.AddWithValue("@seuil", a.SeuilAlerte);
+                    commande.Parameters.AddWithValue("@prix", a.PrixVente);
                     connexion.Open();
                     commande.ExecuteNonQuery();
                 }

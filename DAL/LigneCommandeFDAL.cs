@@ -17,7 +17,7 @@ namespace BDD_Armurerie_TT_25_26.DAL
             List<LigneCommandeF> listeCommandeF = new List<LigneCommandeF>();
             using (SqlConnection connexion = new SqlConnection(_connectionString))
             {
-                string requete = "SELECT IdLigneF, IdCommandeF, IdPiece, QuantiteCommande FROM T_LignesCommandeF";
+                string requete = "SELECT IdLigneF, IdCommandeF, IdPiece, QuantiteCommande FROM T_LigneCommandeF";
                 using (SqlCommand commande = new SqlCommand(requete, connexion))
                 {
                     connexion.Open();
@@ -36,6 +36,24 @@ namespace BDD_Armurerie_TT_25_26.DAL
                 }
             }
             return listeCommandeF;
+        }
+        public void AjouterLigneCommande(int idCommande, int idPiece, int quantite)
+        {
+            using (SqlConnection connexion = new SqlConnection(_connectionString))
+            {
+                string requete = "INSERT INTO T_LigneCommandeF (IdCommandeF, IdPiece, QuantiteCommande) " +
+                                 "VALUES (@idC, @idP, @qte)";
+
+                using (SqlCommand commande = new SqlCommand(requete, connexion))
+                {
+                    commande.Parameters.AddWithValue("@idC", idCommande);
+                    commande.Parameters.AddWithValue("@idP", idPiece);
+                    commande.Parameters.AddWithValue("@qte", quantite);
+
+                    connexion.Open();
+                    commande.ExecuteNonQuery();
+                }
+            }
         }
     }
 }
