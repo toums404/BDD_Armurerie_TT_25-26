@@ -31,14 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FenetrePrincipale));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.msCatalogue = new System.Windows.Forms.ToolStripMenuItem();
-            this.opérationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.msQuitter = new System.Windows.Forms.ToolStripMenuItem();
             this.miFournisseur = new System.Windows.Forms.ToolStripMenuItem();
             this.miArme = new System.Windows.Forms.ToolStripMenuItem();
             this.miPiece = new System.Windows.Forms.ToolStripMenuItem();
+            this.opérationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miVente = new System.Windows.Forms.ToolStripMenuItem();
             this.miAssembler = new System.Windows.Forms.ToolStripMenuItem();
             this.miCommandeFournisseur = new System.Windows.Forms.ToolStripMenuItem();
+            this.msQuitter = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvAlertes = new System.Windows.Forms.DataGridView();
             this.lblAlerte = new System.Windows.Forms.Label();
             this.lblChiffre = new System.Windows.Forms.Label();
@@ -71,22 +71,6 @@
             this.msCatalogue.Size = new System.Drawing.Size(108, 29);
             this.msCatalogue.Text = "Catalogue";
             // 
-            // opérationToolStripMenuItem
-            // 
-            this.opérationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miVente,
-            this.miAssembler,
-            this.miCommandeFournisseur});
-            this.opérationToolStripMenuItem.Name = "opérationToolStripMenuItem";
-            this.opérationToolStripMenuItem.Size = new System.Drawing.Size(108, 29);
-            this.opérationToolStripMenuItem.Text = "Opération";
-            // 
-            // msQuitter
-            // 
-            this.msQuitter.Name = "msQuitter";
-            this.msQuitter.Size = new System.Drawing.Size(83, 29);
-            this.msQuitter.Text = "Quitter";
-            // 
             // miFournisseur
             // 
             this.miFournisseur.Name = "miFournisseur";
@@ -108,6 +92,16 @@
             this.miPiece.Text = "Gérer les pièces";
             this.miPiece.Click += new System.EventHandler(this.miPiece_Click);
             // 
+            // opérationToolStripMenuItem
+            // 
+            this.opérationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miVente,
+            this.miAssembler,
+            this.miCommandeFournisseur});
+            this.opérationToolStripMenuItem.Name = "opérationToolStripMenuItem";
+            this.opérationToolStripMenuItem.Size = new System.Drawing.Size(108, 29);
+            this.opérationToolStripMenuItem.Text = "Opération";
+            // 
             // miVente
             // 
             this.miVente.Name = "miVente";
@@ -128,6 +122,13 @@
             this.miCommandeFournisseur.Size = new System.Drawing.Size(330, 34);
             this.miCommandeFournisseur.Text = "Commander au fournisseur";
             this.miCommandeFournisseur.Click += new System.EventHandler(this.miCommandeFournisseur_Click);
+            // 
+            // msQuitter
+            // 
+            this.msQuitter.Name = "msQuitter";
+            this.msQuitter.Size = new System.Drawing.Size(83, 29);
+            this.msQuitter.Text = "Quitter";
+            this.msQuitter.Click += new System.EventHandler(this.msQuitter_Click);
             // 
             // dgvAlertes
             // 

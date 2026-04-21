@@ -60,5 +60,9 @@ namespace BDD_Armurerie_TT_25_26
             FenetreCommande fenetreCommande = new FenetreCommande();
             fenetreCommande.ShowDialog();
         }
+        private void msQuitter_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
