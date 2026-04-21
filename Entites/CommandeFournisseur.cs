@@ -12,5 +12,6 @@ namespace BDD_Armurerie_TT_25_26.Entites
         public int IdFournisseur { get; set; }
         public DateTime DateCommande { get; set; }
         public string Statut { get; set; }
+        public string NomFournisseurAffichage { get; set; }
     }
 }

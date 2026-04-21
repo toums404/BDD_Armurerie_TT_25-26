@@ -30,6 +30,7 @@ namespace BDD_Armurerie_TT_25_26
             FournisseurManager manager = new FournisseurManager();
             string message = manager.CreerFournisseur(nouveau);
             MessageBox.Show(message);
+            this.Close();
         }
     }
 }

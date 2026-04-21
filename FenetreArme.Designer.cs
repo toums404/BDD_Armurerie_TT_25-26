@@ -53,6 +53,11 @@
             // numPrix
             // 
             this.numPrix.Location = new System.Drawing.Point(100, 109);
+            this.numPrix.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numPrix.Name = "numPrix";
             this.numPrix.Size = new System.Drawing.Size(173, 26);
             this.numPrix.TabIndex = 1;
@@ -60,6 +65,11 @@
             // numStock
             // 
             this.numStock.Location = new System.Drawing.Point(100, 179);
+            this.numStock.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numStock.Name = "numStock";
             this.numStock.Size = new System.Drawing.Size(173, 26);
             this.numStock.TabIndex = 2;
@@ -67,6 +77,11 @@
             // numAlerte
             // 
             this.numAlerte.Location = new System.Drawing.Point(100, 247);
+            this.numAlerte.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numAlerte.Name = "numAlerte";
             this.numAlerte.Size = new System.Drawing.Size(173, 26);
             this.numAlerte.TabIndex = 3;
@@ -133,7 +148,9 @@
             this.Controls.Add(this.txtNom);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FenetreArme";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ajout d\'une arme";
+            this.Load += new System.EventHandler(this.FenetreArme_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPrix)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAlerte)).EndInit();

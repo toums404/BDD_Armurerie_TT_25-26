@@ -102,6 +102,22 @@ namespace BDD_Armurerie_TT_25_26.BLL
 
             return lignesAffichage;
         }
+
+        public string CreerRecetteComplete(int idArme, List<CompoArme_liaison> nouvelleRecette)
+        {
+            if (nouvelleRecette.Count < 2)
+            {
+                return "Erreur : Une arme doit être composée d'au moins 2 pièces distinctes.";
+            }
+
+            // On enregistre chaque pièce de la liste
+            foreach (var ligne in nouvelleRecette)
+            {
+                _compoArme_LiaisonDAL.AjouterLigneComposition(idArme, ligne.IdPiece, ligne.QuantiteRequise);
+            }
+
+            return "Succès : La recette a été enregistrée dans la base de données !";
+        }
     }
     
 }

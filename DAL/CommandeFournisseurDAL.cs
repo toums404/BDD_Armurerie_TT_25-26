@@ -17,7 +17,11 @@ namespace BDD_Armurerie_TT_25_26.DAL
         List<CommandeFournisseur> listeCommandesFournisseur = new List<CommandeFournisseur>();
             using (SqlConnection connexion = new SqlConnection(_connectionString))
             {
-                string requete = "SELECT IdCommandeF, IdFournisseur, DateCommande, Statut FROM T_CommandeFournisseur";
+                string requete = @"
+            SELECT cmd.IdCommandeF, cmd.DateCommande, cmd.IdFournisseur, cmd.Statut, f.NomSociete 
+            FROM T_CommandeFournisseur cmd
+            INNER JOIN T_Fournisseurs f ON cmd.IdFournisseur = f.IdFournisseur
+            ORDER BY cmd.DateCommande DESC";
                 using (SqlCommand commande = new SqlCommand(requete, connexion))
                 {
                     connexion.Open();
@@ -30,6 +34,8 @@ namespace BDD_Armurerie_TT_25_26.DAL
                             cf.IdFournisseur = Convert.ToInt32(lecteur["IdFournisseur"]);
                             cf.DateCommande = Convert.ToDateTime(lecteur["DateCommande"]);
                             cf.Statut = lecteur["Statut"].ToString();
+
+                            cf.NomFournisseurAffichage = lecteur["NomSociete"].ToString();
                             listeCommandesFournisseur.Add(cf);
                         }
                     }

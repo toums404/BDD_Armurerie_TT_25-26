@@ -24,9 +24,22 @@ namespace BDD_Armurerie_TT_25_26
 
         private void FenetrePrincipale_Load(object sender, EventArgs e)
         {
-            dgvAlertes.DataSource = _stockManager.ObtenirArmesSeuil();
+            var armesEnAlerte = _stockManager.ObtenirArmesSeuil();
+            var piecesEnAlerte = _stockManager.ObtenirPiecesSeuil();
+            var alertesCombinees = new List<Object>();
+            foreach (var arme in armesEnAlerte)
+            {
+                alertesCombinees.Add(new { Type = "Arme", Article = arme.Nom, Quantite = arme.QuantiteStock, Seuil = arme.SeuilAlerte });
+            }
+
+            foreach (var piece in piecesEnAlerte)
+            {
+                alertesCombinees.Add(new { Type = "Pièce", Article = piece.Nom, Quantite = piece.QuantiteStock, Seuil = piece.SeuilAlerte });
+            }
+            dgvAlertes.DataSource = alertesCombinees;
+
             decimal ca = _venteManager.CalculerChiffreAffairesHebdo();
-            lblChiffreAffaires.Text = $"Chiffre d'affaires hebdomadaire : {ca} €";
+            lblChiffreAffaires.Text = $"{ca} €";
         }
 
         private void miFournisseur_Click(object sender, EventArgs e)
@@ -63,6 +76,47 @@ namespace BDD_Armurerie_TT_25_26
         private void msQuitter_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void bRVente_Click(object sender, EventArgs e)
+        {
+            FenetreVente fenetreVente = new FenetreVente();
+            fenetreVente.ShowDialog();
+        }
+
+        private void bRAssemblage_Click(object sender, EventArgs e)
+        {
+            FenetreAssemblage fenetreAssemblage = new FenetreAssemblage();
+            fenetreAssemblage.ShowDialog();
+        }
+
+        private void bRCommande_Click(object sender, EventArgs e)
+        {
+            FenetreCommande fenetreCommande = new FenetreCommande();
+            fenetreCommande.ShowDialog();
+        }
+
+        private void bRQuitter_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ajouterUneCompositionDarmeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FenetreComposition fenetreComposition = new FenetreComposition();
+            fenetreComposition.ShowDialog();
+        }
+
+        private void miHistoriqueDeVente_Click(object sender, EventArgs e)
+        {
+            FenetreHistorique fenetreHistorique = new FenetreHistorique();
+            fenetreHistorique.ShowDialog();
+        }
+
+        private void inventaireToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FenetreInventaire fenetreInventaire = new FenetreInventaire();
+            fenetreInventaire.ShowDialog();
         }
     }
 }

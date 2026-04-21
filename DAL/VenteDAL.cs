@@ -17,7 +17,11 @@ namespace BDD_Armurerie_TT_25_26.DAL
             List<Vente> listeVentes = new List<Vente>();
             using (SqlConnection connexion = new SqlConnection(_connectionString))
             {
-                string requete = "SELECT IdVente, DateVente, IdClient, TypeDocument, MontantTotal FROM T_Vente";
+                string requete = @"
+            SELECT v.IdVente, v.DateVente, v.TypeDocument, v.MontantTotal, v.IdClient, c.Nom, c.Prenom 
+            FROM T_Vente v
+            INNER JOIN T_Client c ON v.IdClient = c.IdClient
+            ORDER BY v.DateVente DESC";
                 using (SqlCommand commande = new SqlCommand(requete, connexion))
                 {
                     connexion.Open();
@@ -31,6 +35,7 @@ namespace BDD_Armurerie_TT_25_26.DAL
                             v.IdClient = Convert.ToInt32(lecteur["IdClient"]);
                             v.TypeDocument = lecteur["TypeDocument"].ToString();
                             v.MontantTotal = Convert.ToInt32(lecteur["MontantTotal"]);
+                            v.NomClientAffichage = lecteur["Prenom"].ToString() + " " + lecteur["Nom"].ToString();
                             listeVentes.Add(v);
                         }
                     }
@@ -38,12 +43,12 @@ namespace BDD_Armurerie_TT_25_26.DAL
             }
             return listeVentes;
         }
-        public void AjouterVente(int idClient, DateTime dateVente, string typeDocument, int MontantTotal)
+        public int AjouterVente(int idClient, DateTime dateVente, string typeDocument, int MontantTotal)
         {
             using (SqlConnection connexion = new SqlConnection(_connectionString))
             {
                 // insertion des données
-                string requete = "INSERT INTO T_Vente (DateVente, IdClient, TypeDocument, MontantTotal) VALUES (@date, @idClient, @typeDoc, @montant)";
+                string requete = "INSERT INTO T_Vente (DateVente, IdClient, TypeDocument, MontantTotal) VALUES (@date, @idClient, @typeDoc, @montant)"+ "SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand commande = new SqlCommand(requete, connexion))
                 {
@@ -54,7 +59,7 @@ namespace BDD_Armurerie_TT_25_26.DAL
                     commande.Parameters.AddWithValue("@montant", MontantTotal);
 
                     connexion.Open();
-                    commande.ExecuteNonQuery();
+                    return Convert.ToInt32(commande.ExecuteScalar());
                 }
             }
         }

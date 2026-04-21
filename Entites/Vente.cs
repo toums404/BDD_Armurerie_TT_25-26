@@ -13,6 +13,7 @@ namespace BDD_Armurerie_TT_25_26.Entites
         public int IdClient { get; set; }
         public string TypeDocument { get; set; }
         public int MontantTotal { get; set; }
+        public string NomClientAffichage { get; set; }
 
     }
 }

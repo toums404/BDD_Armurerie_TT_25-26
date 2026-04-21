@@ -65,5 +65,21 @@ namespace BDD_Armurerie_TT_25_26.DAL
             }
             return recette;
         }
+        public void AjouterLigneComposition(int idArme, int idPiece, int quantiteRequise)
+        {
+            using (SqlConnection connexion = new SqlConnection(_connectionString))
+            {
+                string requete = "INSERT INTO T_CompoArme_liaison (IdArme, IdPiece, QuantiteRequise) VALUES (@idA, @idP, @qte)";
+                using (SqlCommand commande = new SqlCommand(requete, connexion))
+                {
+                    commande.Parameters.AddWithValue("@idA", idArme);
+                    commande.Parameters.AddWithValue("@idP", idPiece);
+                    commande.Parameters.AddWithValue("@qte", quantiteRequise);
+
+                    connexion.Open();
+                    commande.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

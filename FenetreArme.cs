@@ -44,5 +44,10 @@ namespace BDD_Armurerie_TT_25_26
                 MessageBox.Show($"Erreur lors de l'ajout de l'arme : {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void FenetreArme_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

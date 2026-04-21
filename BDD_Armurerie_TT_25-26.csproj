@@ -105,11 +105,29 @@
     <Compile Include="FenetreCommande.Designer.cs">
       <DependentUpon>FenetreCommande.cs</DependentUpon>
     </Compile>
+    <Compile Include="FenetreComposition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FenetreComposition.Designer.cs">
+      <DependentUpon>FenetreComposition.cs</DependentUpon>
+    </Compile>
     <Compile Include="FenetreFournisseur.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FenetreFournisseur.Designer.cs">
       <DependentUpon>FenetreFournisseur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FenetreHistorique.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FenetreHistorique.Designer.cs">
+      <DependentUpon>FenetreHistorique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FenetreInventaire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FenetreInventaire.Designer.cs">
+      <DependentUpon>FenetreInventaire.cs</DependentUpon>
     </Compile>
     <Compile Include="FenetrePiece.cs">
       <SubType>Form</SubType>
@@ -140,8 +158,17 @@
     <EmbeddedResource Include="FenetreCommande.resx">
       <DependentUpon>FenetreCommande.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FenetreComposition.resx">
+      <DependentUpon>FenetreComposition.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FenetreFournisseur.resx">
       <DependentUpon>FenetreFournisseur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FenetreHistorique.resx">
+      <DependentUpon>FenetreHistorique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FenetreInventaire.resx">
+      <DependentUpon>FenetreInventaire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FenetrePiece.resx">
       <DependentUpon>FenetrePiece.cs</DependentUpon>

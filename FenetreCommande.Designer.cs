@@ -113,6 +113,7 @@
             this.Controls.Add(this.cmbFournisseur);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FenetreCommande";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Commande a un fournisseur ";
             this.Load += new System.EventHandler(this.FenetreCommande_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numQuantite)).EndInit();

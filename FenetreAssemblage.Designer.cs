@@ -115,6 +115,7 @@
             this.Controls.Add(this.cmbArme);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FenetreAssemblage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Assembleur d\'arme";
             this.Load += new System.EventHandler(this.FenetreAssemblage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numQuantite)).EndInit();

@@ -139,7 +139,7 @@
             // 
             this.bVVente.Location = new System.Drawing.Point(440, 299);
             this.bVVente.Name = "bVVente";
-            this.bVVente.Size = new System.Drawing.Size(120, 48);
+            this.bVVente.Size = new System.Drawing.Size(120, 88);
             this.bVVente.TabIndex = 11;
             this.bVVente.Text = "Valider la vente";
             this.bVVente.UseVisualStyleBackColor = true;
@@ -184,6 +184,7 @@
             this.Controls.Add(this.txtNom);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FenetreVente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nouvelle Vente";
             this.Load += new System.EventHandler(this.FenetreVente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numQuantite)).EndInit();

@@ -25,9 +25,9 @@ namespace BDD_Armurerie_TT_25_26.DAL
                         while (lecteur.Read())
                         {
                             LigneVente lv = new LigneVente();
-                            lv.IdLigneV = Convert.ToInt32(lecteur["IdLigneVente"]);
+                            lv.IdLigneV = Convert.ToInt32(lecteur["IdLigneV"]);
                             lv.IdVente = Convert.ToInt32(lecteur["IdVente"]);
-                            lv.IdArme = Convert.ToInt32(lecteur["IdProduit"]);
+                            lv.IdArme = Convert.ToInt32(lecteur["IdArme"]);
                             lv.Quantite = Convert.ToInt32(lecteur["Quantite"]);
                             lv.PrixUnitaire = Convert.ToDecimal(lecteur["PrixUnitaire"]);
                             listeLignesVente.Add(lv);
@@ -36,6 +36,25 @@ namespace BDD_Armurerie_TT_25_26.DAL
                 }
             }
             return listeLignesVente;
+        }
+        public void AjouterLigneVente(int idVente, int idArme, int quantite, decimal prixUnitaire)
+        {
+            using (SqlConnection connexion = new SqlConnection(_connectionString))
+            {
+                string requete = "INSERT INTO T_LigneVente (IdVente, IdArme, Quantite, PrixUnitaire) " +
+                                 "VALUES (@idV, @idA, @qte, @prix)";
+
+                using (SqlCommand commande = new SqlCommand(requete, connexion))
+                {
+                    commande.Parameters.AddWithValue("@idV", idVente);
+                    commande.Parameters.AddWithValue("@idA", idArme);
+                    commande.Parameters.AddWithValue("@qte", quantite);
+                    commande.Parameters.AddWithValue("@prix", prixUnitaire);
+
+                    connexion.Open();
+                    commande.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

@@ -110,6 +110,7 @@
             this.Controls.Add(this.txtNom);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FenetreFournisseur";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ajout de fournisseur";
             this.ResumeLayout(false);
             this.PerformLayout();

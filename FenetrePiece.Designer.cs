@@ -72,6 +72,11 @@
             // numStock
             // 
             this.numStock.Location = new System.Drawing.Point(80, 251);
+            this.numStock.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numStock.Name = "numStock";
             this.numStock.Size = new System.Drawing.Size(171, 26);
             this.numStock.TabIndex = 3;
@@ -79,6 +84,11 @@
             // numAlerte
             // 
             this.numAlerte.Location = new System.Drawing.Point(82, 313);
+            this.numAlerte.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numAlerte.Name = "numAlerte";
             this.numAlerte.Size = new System.Drawing.Size(168, 26);
             this.numAlerte.TabIndex = 4;
@@ -86,6 +96,11 @@
             // numPrix
             // 
             this.numPrix.Location = new System.Drawing.Point(81, 374);
+            this.numPrix.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numPrix.Name = "numPrix";
             this.numPrix.Size = new System.Drawing.Size(169, 26);
             this.numPrix.TabIndex = 5;
@@ -174,6 +189,7 @@
             this.Controls.Add(this.txtNom);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FenetrePiece";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ajouter une pièce";
             this.Load += new System.EventHandler(this.FenetrePiece_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numStock)).EndInit();
